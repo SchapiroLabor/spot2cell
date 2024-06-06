@@ -1,6 +1,7 @@
 import os
 import argparse
 from spot2cell import Spot2Cell
+from version import __version__
 import pathlib
 from pathlib import Path
 if os.name == 'nt':
@@ -13,6 +14,7 @@ def get_args():
     parser.add_argument('-s', '--spots', type=str, help='Path to the spot table csv file.')
     parser.add_argument('-m', '--mask', type=str, help='Path to the cell mask tif file.')
     parser.add_argument('-o', '--output', type=str, help='Path to the output csv file.')
+    parser.add_argument('--version', action='version', version=f'{__version__}')
     args = parser.parse_args()
 
     # Standardize paths

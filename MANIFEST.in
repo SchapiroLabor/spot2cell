@@ -1,0 +1,3 @@
+include README.md
+recursive-include spot2cell *.py
+exclude .gitignore

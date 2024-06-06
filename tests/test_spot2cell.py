@@ -3,7 +3,6 @@ import numpy as np
 from tempfile import NamedTemporaryFile
 from tifffile import imwrite
 import os
-
 from spot2cell import Spot2Cell
 
 # Pytest.fixture is a decorator that allows you to define a factory for test objects.
