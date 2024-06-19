@@ -9,7 +9,7 @@ packages = ["spot2cell"]
 name = "spot2cell"
 version = "0.0.1"
 authors = [{ name="Miguel A. Ibarra-Arellano", email="c180l058j@mozmail.com"},]
-license = ["AGPLv3"]
+license = {text = "AGPL-3.0-or-later"}
 description = "From a X,Y list of detected spots, assigns each spot to a cell based on a segmentation mask"
 readme = "README.md"
 requires-python = ">=3.9"
