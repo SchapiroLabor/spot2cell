@@ -87,7 +87,7 @@ def test_spot2cell_mask_from_file(setup_spot2cell):
     :return:
     """
     spots, mask, _ = setup_spot2cell
-    with NamedTemporaryFile(suffix='.tif') as temp_mask_file:
+    with NamedTemporaryFile(delete=False, suffix='.tif') as temp_mask_file:
         imwrite(temp_mask_file.name, mask)
         temp_mask_file_path = temp_mask_file.name
         s2c = Spot2Cell(spots, temp_mask_file_path)
@@ -101,7 +101,7 @@ def test_spot2cell_spots_from_file(setup_spot2cell):
     :return:
     """
     spots, mask, _ = setup_spot2cell
-    with NamedTemporaryFile(suffix='.csv') as temp_spots_file:
+    with NamedTemporaryFile(delete=False, suffix='.csv') as temp_spots_file:
         np.savetxt(temp_spots_file.name, spots, delimiter=',', header='y,x', comments='', fmt='%d')
         temp_spots_file_path = temp_spots_file.name
         s2c = Spot2Cell(temp_spots_file_path, mask)
