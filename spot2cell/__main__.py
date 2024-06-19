@@ -1,7 +1,7 @@
 import os
 import argparse
-from spot2cell import Spot2Cell
-from version import __version__
+from .spot2cell import Spot2Cell
+from .version import __version__
 import pathlib
 from pathlib import Path
 if os.name == 'nt':
