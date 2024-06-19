@@ -34,7 +34,7 @@ keywords = [
 ]
 
 [project.scripts]
-spots2cells = "spot2cell.scropts.spots2cells:main"
+spots2cells = "spot2cell.scripts.spots2cells:main"
 
 [project.urls]
 Repository = "https://github.com/SchapiroLabor/spot2cell"
