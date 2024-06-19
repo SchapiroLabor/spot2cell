@@ -4,6 +4,17 @@ This tool assigns single-molecule detected spots to their respective cells in a 
 
 ## Installation
 
-## Docker
+```bash
+pip install spot2cell
+```
 
+## Docker
+Build Docker image from Dockerfile
+```bash
+docker build -t spot2cell .
+```
 ## CLI
+
+```bash
+spot2cell --help
+```
