@@ -80,20 +80,6 @@ def test_spot2cell_save(setup_spot2cell):
     np.testing.assert_array_equal(loaded_data, expected_counts)
 
 
-def test_spot2cell_spots_from_file(setup_spot2cell):
-    """
-    This test checks if the Spot2Cell class correctly reads spots from a csv file.
-    :param setup_spot2cell:
-    :return:
-    """
-    spots, mask, _ = setup_spot2cell
-    with NamedTemporaryFile(suffix='.csv') as temp_spots_file:
-        np.savetxt(temp_spots_file, spots, delimiter=',', header='x,y', comments='', fmt='%d')
-        temp_spots_file_path = temp_spots_file.name
-        s2c = Spot2Cell(temp_spots_file_path, mask)
-        np.testing.assert_array_equal(s2c.spots, spots)
-
-
 def test_spot2cell_mask_from_file(setup_spot2cell):
     """
     This test checks if the Spot2Cell class correctly reads the mask from a tif file.
@@ -107,3 +93,16 @@ def test_spot2cell_mask_from_file(setup_spot2cell):
         s2c = Spot2Cell(spots, temp_mask_file_path)
         np.testing.assert_array_equal(s2c.mask, mask)
 
+
+def test_spot2cell_spots_from_file(setup_spot2cell):
+    """
+    This test checks if the Spot2Cell class correctly reads spots from a csv file.
+    :param setup_spot2cell:
+    :return:
+    """
+    spots, mask, _ = setup_spot2cell
+    with NamedTemporaryFile(suffix='.csv') as temp_spots_file:
+        np.savetxt(temp_spots_file.name, spots, delimiter=',', header='y,x', comments='', fmt='%d')
+        temp_spots_file_path = temp_spots_file.name
+        s2c = Spot2Cell(temp_spots_file_path, mask)
+        np.testing.assert_array_equal(s2c.spots, spots)
