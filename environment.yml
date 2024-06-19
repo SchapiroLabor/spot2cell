@@ -5,3 +5,5 @@ dependencies:
   - "python>=3.9"
   - "numpy"
   - "tifffile"
+  - pip:
+      - "git+https://github.com/SchapiroLabor/spot2cell.git"
