@@ -7,7 +7,7 @@ packages = ["spot2cell"]
 
 [project]
 name = "spot2cell"
-version = "0.0.1"
+version = "0.0.2"
 authors = [{ name="Miguel A. Ibarra-Arellano", email="c180l058j@mozmail.com"},]
 license = {text = "AGPL-3.0-or-later"}
 description = "From a X,Y list of detected spots, assigns each spot to a cell based on a segmentation mask"
@@ -23,7 +23,7 @@ classifiers = [
 ]
 dependencies = [
     "numpy",
-    "tiffile"
+    "tifffile"
 ]
 keywords = [
     "cell",
