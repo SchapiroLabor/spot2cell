@@ -2,10 +2,12 @@ import logging
 import sys
 
 
-def set_logger(logger=None,
-               log_level='info',
-               log_format='%(asctime)s - %(levelname)s - %(message)s'):
-    """ Function to set up the handle error logging.
+def set_logger(
+    logger=None,
+    log_level="info",
+    log_format="%(asctime)s - %(levelname)s - %(message)s",
+):
+    """Function to set up the handle error logging.
 
     logger (obj) = a logger object (optional, creates a default logger if not provided)
     log_level (str) = level of information to print out, options are {info, debug} [Default: info]
@@ -17,9 +19,9 @@ def set_logger(logger=None,
         logger = logging.getLogger(__name__)
 
     # Determine log level
-    if log_level == 'info':
+    if log_level == "info":
         _level = logging.INFO
-    elif log_level == 'debug':
+    elif log_level == "debug":
         _level = logging.DEBUG
     else:
         raise ValueError(f"Log level {log_level} not recognized.")

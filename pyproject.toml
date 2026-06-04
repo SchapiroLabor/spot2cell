@@ -2,12 +2,9 @@
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools]
-packages = ["spot2cell"]
-
 [project]
 name = "spot2cell"
-version = "0.0.2"
+dynamic = ["version"]
 authors = [{ name="Miguel A. Ibarra-Arellano", email="c180l058j@mozmail.com"},]
 license = {text = "AGPL-3.0-or-later"}
 description = "From a X,Y list of detected spots, assigns each spot to a cell based on a segmentation mask"
@@ -17,6 +14,11 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
+    "Programming Language :: Python :: 3.16",
     "Operating System :: OS Independent",
     "Intended Audience :: Science/Research",
     "License :: OSI Approved :: GNU Affero General Public License v3"
@@ -33,6 +35,12 @@ keywords = [
     "Xenium"
 ]
 
+[tool.setuptools]
+packages = ["spot2cell"]
+
+[tool.setuptools.dynamic]
+version = { attr = "spot2cell.__version__" }
+
 [project.scripts]
 spots2cells = "spot2cell.scripts.spots2cells:main"
 
@@ -40,5 +48,3 @@ spots2cells = "spot2cell.scripts.spots2cells:main"
 Repository = "https://github.com/SchapiroLabor/spot2cell"
 Homepage = "https://github.com/SchapiroLabor/spot2cell"
 Issues = "https://github.com/SchapiroLabor/spot2cell/issues"
-
-

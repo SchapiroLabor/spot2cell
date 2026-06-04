@@ -1,2 +1,4 @@
+from . import logger
 from .spot2cell import Spot2Cell
-from .version import __version__
+
+__version__ = "0.0.3"
