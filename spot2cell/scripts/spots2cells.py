@@ -34,6 +34,7 @@ def CLI() -> argparse.ArgumentParser:
         "--x-col",
         type=int,
         default=0,
+        required=True,
         help="Column index of the x coordinate in the spots table [default: 0].",
     )
     parser.add_argument(
@@ -41,7 +42,16 @@ def CLI() -> argparse.ArgumentParser:
         "--y-col",
         type=int,
         default=1,
+        required=True,
         help="Column index of the y coordinate in the spots table [default: 1].",
+    )
+    parser.add_argument(
+        "-k",
+        "--key",
+        type=int,
+        defualt=None,
+        required=False,
+        help="Column index of the key/markers.",
     )
     parser.add_argument(
         "-o",
@@ -54,9 +64,10 @@ def CLI() -> argparse.ArgumentParser:
     return parser
 
 
-def main(argv: Optional[Sequence[str]] = None) -> int:
+def main(argv: Optional[Sequence[str]] = None) -> None:
     # Get CLI arguments
     parser = CLI()
+    argv = ["-s", "/Users/miguelibarra/Projects/amit_gt_comparison/data/phenotypes/ground_truth/KO257B1.csv", "-m", "/Users/miguelibarra/Projects/amit_gt_comparison/data/masks/nuclear/KO_257_B1_mask.tif"]
     args = parser.parse_args(argv)
 
     # Resolves the paths to absolute paths
@@ -70,27 +81,20 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     LOGGER.info(f"Reading mask from: {args.mask}")
     LOGGER.info(f"Reading spots from: {args.spots}")
 
-    try:
-        # Create an instance of the Spot2Cell class.
-        LOGGER.info(f"Creating Spot2Cell instance")
-        Spots = Spot2Cell(
-            args.spots,
-            args.mask,
-            x_col=args.x_col,
-            y_col=args.y_col,
-            logger=LOGGER,
-        )
 
-        # Save the assigned spots to a csv file.
-        LOGGER.info(f"Writing assigned spots to: {args.output}")
-        Spots.save(args.output)
+    # Create an instance of the Spot2Cell class.
+    LOGGER.info(f"Creating Spot2Cell instance")
+    Spots = Spot2Cell(
+        args.spots,
+        args.mask,
+        x_col=args.x_col,
+        y_col=args.y_col,
+        logger=LOGGER,
+    )
 
-        return 0
-
-    except Exception as e:
-        print(f"spot2cells exit with an error: {e}")
-        return 1
-
+    # Save the assigned spots to a csv file.
+    LOGGER.info(f"Writing assigned spots to: {args.output}")
+    Spots.save(args.output)
 
 if __name__ == "__main__":
     main()

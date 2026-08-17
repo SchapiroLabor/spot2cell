@@ -34,6 +34,7 @@ class Spot2Cell:
         mask: Union[str, Path, np.ndarray],
         x_col: int = 0,
         y_col: int = 1,
+        key_col: int = None,
         logger: Optional[logging.Logger] = None,
     ):
         """
@@ -54,6 +55,7 @@ class Spot2Cell:
         self.labeled_spots = None
         self.x_col = x_col
         self.y_col = y_col
+        self.key_col = key_col
         self.LOGGER = (
             logger if logger is not None else logger.set_logger(log_level="debug")
         )
